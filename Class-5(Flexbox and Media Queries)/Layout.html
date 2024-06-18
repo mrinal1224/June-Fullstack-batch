@@ -1,49 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+
+    <style>
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8ff;
+        color: #333;
+      }
+
+      /* Header Design */
+
+      header{
+        background-color:#1e90ff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        padding: 16px;
+      }
+
+      nav ul{
+        display: flex;
+        gap:16px;
+        list-style: none;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+      }
+     
+
+      /* Main */
+      .hero{
+        text-align: center;
+        background-color:#87cefa ;
+        padding: 32px;
+      }
+
+      /* Courses */
+
+      .courses{
+        display: flex;
+        justify-content: space-around;
+        gap:16px;
+        padding: 32px;
+        flex-wrap: wrap;
+       
+
+      }
+
+      .course-card{
+        background-color:#e0ffff ;
+        border: 1px solid #b0c4de;
+        border-radius: 8px;
+        flex : 1 1 30%;
+        padding: 32px;
+     
+
+      }
+
+      footer {
+    background-color: #1e90ff;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+ 
+
+
+
+
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>Scaler</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+      <h1>Scaler</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section class="hero">
-            <h2>Welcome to Scaler</h2>
-            <p>Discover the best courses and tutorials online.</p>
-        </section>
-        <section class="courses">
-            <div class="course-card">
-                <h3>Web Development</h3>
-                <p>Learn the latest web technologies.</p>
-            </div>
-            <div class="course-card">
-                <h3>Data Science</h3>
-                <p>Master data analysis and visualization.</p>
-            </div>
-            <div class="course-card">
-                <h3>Machine Learning</h3>
-                <p>Explore the world of AI and machine learning.</p>
-            </div>
-            <div class="course-card">
-                <h3>Devops</h3>
-                <p>Learn Devops and how to Ship Production Ready Applications</p>
-            </div>
-        </section>
+      <section class="hero">
+        <h2>Welcome to Scaler</h2>
+        <p>Discover the best courses and tutorials online.</p>
+      </section>
+      <section class="courses">
+        <div class="course-card">
+          <h3>Web Development</h3>
+          <p>Learn the latest web technologies.</p>
+        </div>
+        <div class="course-card">
+          <h3>Data Science</h3>
+          <p>Master data analysis and visualization.</p>
+        </div>
+        <div class="course-card">
+          <h3>Machine Learning</h3>
+          <p>Explore the world of AI and machine learning.</p>
+        </div>
+        <div class="course-card">
+          <h3>Devops</h3>
+          <p>Learn Devops and how to Ship Production Ready Applications</p>
+        </div>
+      </section>
     </main>
     <footer>
-        <p>&copy; 2024 Scaler. All rights reserved.</p>
+      <p>&copy; 2024 Scaler. All rights reserved.</p>
     </footer>
-    
-</body>
+  </body>
 </html>
