@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Layout</title>
+</head>
+
+<style>
+
+    body{
+        font-size: 25px;
+        height: 100vh;
+        color : white;
+
+        display: grid;
+        text-align: center;
+
+        grid-template-areas:
+        'top top top'
+        'navigation content sidebar'
+        'navigation footer footer';
+
+        grid-template-columns:1fr 4fr 1fr;
+
+        grid-template-rows: 80px 1fr 70px;
+
+    
+   
+
+
+    }
+
+
+    header , main ,nav , aside , footer{
+        background-color: tomato;
+        padding:  20px;
+        border: 2px skyblue solid;
+    }
+
+    header{
+        grid-area : top
+    }
+
+    nav{
+        grid-area : navigation;
+    }
+
+    main {
+        grid-area: content;
+    }
+
+    aside{
+        grid-area: sidebar;
+    }
+
+    footer{
+        grid-area: footer;
+    }
+
+
+</style>
+<body>
+ 
+
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>Content</main>
+    <aside>SideBar1</aside>
+    <footer>footer</footer>
+
+
+    
+</body>
+</html>
