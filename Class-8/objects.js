@@ -66,6 +66,7 @@ let person1 = {
     age : 23
 }
 
+
 const person2 = person1
 
 person2.name='Adam'
