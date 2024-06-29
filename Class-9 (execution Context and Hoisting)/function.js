@@ -18,7 +18,7 @@
 
 const sayHi = function(){
     console.log('hi')
-}
+} // Anonymous function
 
 const serveBeverage = function(quantity , drink){
     console.log('I want ' + quantity  + ' ' + drink)
