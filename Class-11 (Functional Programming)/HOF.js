@@ -1,5 +1,10 @@
 let myRadiusArray = [2, 3, 4, 5, 8]
 // Genric Function
+function circleArea(r){
+    return 3.14 * r * r
+}
+
+
 
 function Calculate(radiusArr , cb){
     let result = []
@@ -11,23 +16,21 @@ function Calculate(radiusArr , cb){
 
 
 
+let newAreaArray = myRadiusArray.map(circleArea)
+console.log(newAreaArray)
 
-function circleArea(r){
-    return 3.14 * r * r
-}
+// function circleCircumference(r){
+//     return 2 * Math.PI * r;
+// }
 
-function circleCircumference(r){
-    return 2 * Math.PI * r;
-}
+// function circleDiamter(r){
+//   return 2 * r
+// }
+// let diamters = Calculate(myRadiusArray ,circleDiamter)
 
-function circleDiamter(r){
-  return 2 * r
-}
-let diamters = Calculate(myRadiusArray ,circleDiamter)
+// console.log(myRadiusArray)
 
-console.log(myRadiusArray)
-
-console.log(diamters)
+// console.log(diamters)
 
 // /// Area
 // function calculateArea(radiusArr){
