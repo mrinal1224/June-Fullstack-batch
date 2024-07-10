@@ -1,7 +1,4 @@
-
 # Asynchronous Programming 2
-
-
 
 - What are Promises
 - Asynchronous Programming with Promises
