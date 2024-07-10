@@ -1,3 +1,4 @@
+const { error } = require("console");
 const fs = require("fs");
 
 // fs.readFile('f1.txt', cb)
@@ -32,4 +33,10 @@ function cb3(data) {
   console.log("This is my file data " + data);
 }
 
-promiseReadFile1.then(cb1).then(cb2).then(cb3);
+promiseReadFile1
+  .then(cb1)
+  .then(cb2)
+  .then(cb3)
+  .catch(function (err) {
+    console.log(err);
+  });
