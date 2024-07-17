@@ -64,9 +64,12 @@
 
       for (let i = 0; i < allCards.length; i++) {
         allCards[i].addEventListener("dblclick", function (e) {
+            console.log(e)
           const colorAttr = e.target.getAttribute("data-color");
           console.log(colorAttr);
           e.target.classList.add(colorAttr);
+
+          
 
           console.log(e.target.classList);
 
