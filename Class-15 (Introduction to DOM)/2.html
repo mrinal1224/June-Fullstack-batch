@@ -21,7 +21,27 @@
 
     <script>
         // Fix the list by inserting the missing element using querySelectorAll and insertBefor
-   
+        
+         const allItems = document.querySelectorAll('li')
+
+
+         let indexThatHas8 = allItems[6] // 8
+
+         console.log(indexThatHas8)
+
+
+         let sevenElement = document.createElement('li')
+         sevenElement.innerText= "7"
+
+
+         let myList = document.querySelector('ul')
+
+         myList.insertBefore(sevenElement ,indexThatHas8 )
+
+
+
+
+
 
     </script>
 </body>
