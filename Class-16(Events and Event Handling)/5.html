@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
   <head>
-    <meta charset = "UTF - 8" />
-    <meta http - equiv = "X - UA - Compatible" content = "IE = edge" />
-    <meta name = "viewport" content = "width = device - width, initial - scale = 1.0" />
+    <meta charset="UTF - 8" />
+    <meta http - equiv="X - UA - Compatible" content="IE = edge" />
+    <meta
+      name="viewport"
+      content="width = device - width, initial - scale = 1.0"
+    />
     <title>Document</title>
     <style>
       * {
@@ -54,64 +57,86 @@
       select {
         width: 8rem;
       }
-
-
     </style>
   </head>
 
   <body>
     <h1>BOOK MY SHOW</h1>
     <select>
-      <option value = "none">None</option>
-      <option value = "action">Action</option>
-      <option value = "romance">Romance</option>
-      <option value = "comedy">Comedy</option>
+      <option value="none">None</option>
+      <option value="action">Action</option>
+      <option value="romance">Romance</option>
+      <option value="comedy">Comedy</option>
     </select>
 
-    <div class = "movies">
-      <h3 class = "heading">Action Movie - 1</h3>
-      <p class = "price" data-category = "action">Rs. 100</p>
+    <div class="movies">
+      <h3 class="heading">Action Movie - 1</h3>
+      <p class="price" data-category="action">Rs. 100</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Action Movie - 2</h3>
-      <p class = "price" data-category = "action">Rs 200</p>
+    <div class="movies">
+      <h3 class="heading">Action Movie - 2</h3>
+      <p class="price" data-category="action">Rs 200</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Action Movie - 3</h3>
-      <p class = "price" data-category = "action">Rs. 150</p>
+    <div class="movies">
+      <h3 class="heading">Action Movie - 3</h3>
+      <p class="price" data-category="action">Rs. 150</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Romance - 1</h3>
-      <p class = "price" data-category = "romance">Rs 200</p>
+    <div class="movies">
+      <h3 class="heading">Romance - 1</h3>
+      <p class="price" data-category="romance">Rs 200</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Romance - 2</h3>
-      <p class = "price" data-category = "romance">Rs. 150</p>
+    <div class="movies">
+      <h3 class="heading">Romance - 2</h3>
+      <p class="price" data-category="romance">Rs. 150</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Romance - 3</h3>
-      <p class = "price" data-category = "romance">Rs. 150</p>
+    <div class="movies">
+      <h3 class="heading">Romance - 3</h3>
+      <p class="price" data-category="romance">Rs. 150</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Action Movie-4</h3>
-      <p class = "price" data-category = "action">Rs 200</p>
+    <div class="movies">
+      <h3 class="heading">Action Movie-4</h3>
+      <p class="price" data-category="action">Rs 200</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Comedy - 1</h3>
-      <p class = "price" data-category = "comedy">Rs. 100</p>
+    <div class="movies">
+      <h3 class="heading">Comedy - 1</h3>
+      <p class="price" data-category="comedy">Rs. 100</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Romance - 4</h3>
-      <p class = "price" data-category = "romance">Rs. 100</p>
+    <div class="movies">
+      <h3 class="heading">Romance - 4</h3>
+      <p class="price" data-category="romance">Rs. 100</p>
     </div>
-    <div class = "movies">
-      <h3 class = "heading">Comedy - 2</h3>
-      <p class = "price" data-category = "comedy">Rs 200</p>
+    <div class="movies">
+      <h3 class="heading">Comedy - 2</h3>
+      <p class="price" data-category="comedy">Rs 200</p>
     </div>
     <script>
       // Q Make the filter work
 
-      
+      const dropDown = document.querySelector("select");
+
+      console.log(dropDown);
+
+      dropDown.addEventListener("change", function () {
+        const filterValue = dropDown.value;
+
+        console.log(filterValue);
+
+        const allPrices = document.querySelectorAll(".price");
+
+        if (filterValue === "none") {
+          for (let i = 0; i < allPrices.length; i++) {
+            allPrices[i].parentElement.style.display = "block";
+          }
+        } else {
+          for (let i = 0; i < allPrices.length; i++) {
+            if (allPrices[i].getAttribute("data-category") != filterValue) {
+              allPrices[i].parentElement.style.display = "none";
+            } else {
+              allPrices[i].parentElement.style.display = "block";
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>
