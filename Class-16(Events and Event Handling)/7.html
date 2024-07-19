@@ -55,9 +55,7 @@
       const AllItems = unorderdList.querySelectorAll('li')
 
       removeAllBtn.addEventListener('click' , function(){
-        for(let i=0 ; i<AllItems.length ; i++){
-            AllItems[i].remove()
-        }
+        unorderdList.remove()
       })
 
       
