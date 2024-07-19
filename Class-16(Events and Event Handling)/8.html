@@ -7,14 +7,37 @@
     <title>Document</title>
   </head>
   <body>
-    <div id = "doubleHolder">
+    <div id="doubleHolder">
       <button class = "double">double</button>
     </div>
 
     <script>
-      //Q Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
+      //    Q Create a button that is destroyed by clicking on it but two new buttons are created in it's place.
 
+      //   Solution:
 
+      document.querySelector('#doubleHolder').addEventListener('click' , function(e){
+       if(e.target.classList.contains('double')){
+        let btn1 = document.createElement('button')
+        btn1.innerText = 'first Button'
+
+        let btn2 = document.createElement('button')
+        btn2.innerText = 'Second Button'
+
+        const body = document.querySelector('body')
+
+        body.appendChild(btn1)
+
+        body.appendChild(btn2)
+
+        const doubleHolder = document.querySelector('#doubleHolder')
+
+        doubleHolder.remove()
+          
+       }
+      })
+
+     
     </script>
   </body>
 </html>
