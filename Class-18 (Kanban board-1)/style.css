@@ -82,6 +82,37 @@ body{
     font-size: 3.2rem;
 }
 
+/* Ticket design */
+
+.main-cont{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    
+}
+
+.ticket-cont{
+    height: 12rem;
+    width: 15rem;
+    background-color: coral;
+}
+
+.ticket-color{
+    height: 1rem;
+}
+
+.ticket-id{
+    height: 2rem;
+    background-color: yellow;
+}
+
+.ticket-lock{
+    display: flex;
+    justify-content: end;
+    margin-top : 6rem;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
 
 
 
