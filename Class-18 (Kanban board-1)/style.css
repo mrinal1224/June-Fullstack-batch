@@ -109,10 +109,10 @@ body{
 
 .ticket-lock{
     display: flex;
-    position:fixed;
-    top : 16rem;
+    justify-content: flex-end;
+    margin-top: 5.5rem;
+    margin-right: 1rem;
     font-size: 1.5rem;
-    left : 50rem
 }
 
 /* Modal Pop up */
