@@ -94,6 +94,10 @@ function handleLock(ticket){
     
 }
 
+// Delete the tickets - Homework
+
+
+
 
 
 
