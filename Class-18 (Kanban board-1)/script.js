@@ -3,6 +3,7 @@ const addBtn = document.querySelector(".add-btn");
 const modalCont = document.querySelector(".modal-cont");
 const mainCont = document.querySelector('.main-cont')
 const textArea = document.querySelector('.textArea-cont')
+const allPriorityColors = document.querySelectorAll('.priority-color')
 modalCont.style.display = "none";
 
 let addtaskFlag = false;
@@ -46,3 +47,20 @@ function createTicket(TicketTask) {
     modalCont.style.display = "none";
 
 }
+
+
+allPriorityColors.forEach(function(colorElem){
+    colorElem.addEventListener('click' , function(){
+       allPriorityColors.forEach(function(priorityColorElements){
+       priorityColorElements.classList.remove('active')
+       })
+       colorElem.classList.add('active')
+       console.log(colorElem)
+    })
+
+  
+
+    
+})
+
+// Starting at 10:10 , Please be done with task addition and id genration
