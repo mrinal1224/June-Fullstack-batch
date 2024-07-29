@@ -7,6 +7,9 @@ const allPriorityColors = document.querySelectorAll(".priority-color");
 modalCont.style.display = "none";
 let modalPriorityColor = 'lightpink'
 
+let unlockClass = 'fa-lock-open'
+let lockClass = 'fa-lock' 
+
 let addtaskFlag = false;
 
 // Modal toggle
@@ -45,6 +48,8 @@ function createTicket(TicketTask , ticketColor) {
 
   mainCont.appendChild(ticketCont);
   modalCont.style.display = "none";
+
+  handleLock(ticketCont)
 }
 
 allPriorityColors.forEach(function (colorElem) {
@@ -57,5 +62,40 @@ allPriorityColors.forEach(function (colorElem) {
      modalPriorityColor = colorSelected
   });
 });
+
+// Starting at 10:50
+
+// Lock Handling to Edit Content
+
+function handleLock(ticket){
+    let ticketLockElem = ticket.querySelector('.ticket-lock')
+    let ticketLockIcon = ticketLockElem.children[0]
+    console.log(ticketLockIcon)
+    let ticketTaskArea = ticket.querySelector('.ticket-task')
+
+    ticketLockIcon.addEventListener('click' , function(){
+        if(ticketLockIcon.classList.contains(lockClass)){
+            ticketLockIcon.classList.remove(lockClass)
+            ticketLockIcon.classList.add(unlockClass)
+
+            ticketTaskArea.setAttribute('contenteditable' , 'true')
+        }
+        else{
+            ticketLockIcon.classList.remove(unlockClass)
+            ticketLockIcon.classList.add(lockClass)
+            ticketTaskArea.setAttribute('contenteditable' , 'false')
+        }
+    })
+    
+
+    
+
+
+    
+}
+
+
+
+
 
 
