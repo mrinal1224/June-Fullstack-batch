@@ -2,6 +2,7 @@ const addBtn = document.querySelector(".add-btn");
 
 const modalCont = document.querySelector(".modal-cont");
 const mainCont = document.querySelector('.main-cont')
+const textArea = document.querySelector('.textArea-cont')
 modalCont.style.display = "none";
 
 let addtaskFlag = false;
@@ -24,17 +25,21 @@ modalCont.addEventListener("keydown", function (e) {
   console.log(key);
 
   if (key === "Shift") {
-    createTicket();
+
+    let task = textArea.value
+    console.log(task)
+    createTicket(task);
   }
 });
 
-function createTicket() {
+function createTicket(TicketTask) {
+  let id = shortid()
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
   ticketCont.innerHTML = ` <div class="ticket-color lightblue"></div>
-    <div class="ticket-id">12345</div>
-    <div class="ticket-task"></div>
+    <div class="ticket-id">${id}</div>
+    <div class="ticket-task">${TicketTask}</div>
     <div class="ticket-lock"><i class="fa-solid fa-lock"></i></div>`;
 
     mainCont.appendChild(ticketCont)

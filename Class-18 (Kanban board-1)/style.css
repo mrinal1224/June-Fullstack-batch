@@ -88,6 +88,7 @@ body{
     display: flex;
     justify-content: center;
     padding: 2rem;
+    gap: 2rem
     
 }
 
