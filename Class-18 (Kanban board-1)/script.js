@@ -5,6 +5,11 @@ const mainCont = document.querySelector(".main-cont");
 const textArea = document.querySelector(".textArea-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
 const removeBtn = document.querySelector(".remove-btn");
+const toolBoxColors= document.querySelectorAll('.color-box')
+
+console.log(toolBoxColors)
+
+let ticketsArr = []
 
 // Colors array
 
@@ -74,6 +79,9 @@ function createTicket(TicketTask, ticketColor) {
   handleLock(ticketCont);
   handleRemoval(ticketCont);
   handleColor(ticketCont); // to change the color band
+  ticketsArr.push({id , TicketTask , ticketColor})
+  console.log(ticketsArr)
+  
 }
 
 allPriorityColors.forEach(function (colorElem) {
@@ -88,6 +96,28 @@ allPriorityColors.forEach(function (colorElem) {
 });
 
 // Starting at 10:50
+
+// Ticket Filteration wrt colors
+toolBoxColors.forEach(function(colorBox , i){
+  colorBox.addEventListener('click' , function(){
+    let selectedToolBoxColor = toolBoxColors[i].classList[0]
+    let filteredTickets = ticketsArr.filter(function(ticket){
+      return selectedToolBoxColor === ticket.ticketColor
+    })
+
+    console.log(filteredTickets)
+     
+  })
+})
+
+
+
+
+
+
+
+
+
 
 // Lock Handling to Edit Content
 
@@ -138,3 +168,8 @@ function handleColor(ticket){
     ticketColorBand.classList.add(newTicketColor)
   })
 }
+
+// Starting at 10:20
+
+
+
