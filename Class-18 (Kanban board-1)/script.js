@@ -4,13 +4,21 @@ const modalCont = document.querySelector(".modal-cont");
 const mainCont = document.querySelector(".main-cont");
 const textArea = document.querySelector(".textArea-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
+const removeBtn = document.querySelector('.remove-btn')
+
+
+
+
 modalCont.style.display = "none";
+
+//local variables
 let modalPriorityColor = 'lightpink'
 
 let unlockClass = 'fa-lock-open'
 let lockClass = 'fa-lock' 
 
 let addtaskFlag = false;
+let removeTaskFlag = false
 
 // Modal toggle
 addBtn.addEventListener("click", function () {
@@ -22,6 +30,21 @@ addBtn.addEventListener("click", function () {
     modalCont.style.display = "none";
   }
 });
+
+// Make the delete button Active
+removeBtn.addEventListener('click' , function(){
+  removeTaskFlag = !removeTaskFlag
+
+  if(removeTaskFlag===true){
+    alert('Delete button is Activated')
+    removeBtn.style.color = 'red'
+  }
+  else{
+    alert('Delete Button Deactivated')
+    removeBtn.style.color = 'white'
+  }
+})
+
 
 /// Generating a Ticket
 
@@ -50,6 +73,7 @@ function createTicket(TicketTask , ticketColor) {
   modalCont.style.display = "none";
 
   handleLock(ticketCont)
+  handleRemoval(ticketCont)
 }
 
 allPriorityColors.forEach(function (colorElem) {
@@ -95,6 +119,16 @@ function handleLock(ticket){
 }
 
 // Delete the tickets - Homework
+
+function handleRemoval(ticket){
+  ticket.addEventListener('click' , function(){
+    if(!removeTaskFlag) return 
+
+    ticket.remove()
+  })
+}
+
+
 
 
 
