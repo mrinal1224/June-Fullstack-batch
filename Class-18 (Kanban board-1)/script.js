@@ -4,21 +4,22 @@ const modalCont = document.querySelector(".modal-cont");
 const mainCont = document.querySelector(".main-cont");
 const textArea = document.querySelector(".textArea-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
-const removeBtn = document.querySelector('.remove-btn')
+const removeBtn = document.querySelector(".remove-btn");
 
+// Colors array
 
-
+const colors = ["lightpink", "lightgreen", "lightblue", "black"];
 
 modalCont.style.display = "none";
 
 //local variables
-let modalPriorityColor = 'lightpink'
+let modalPriorityColor = "lightpink";
 
-let unlockClass = 'fa-lock-open'
-let lockClass = 'fa-lock' 
+let unlockClass = "fa-lock-open";
+let lockClass = "fa-lock";
 
 let addtaskFlag = false;
-let removeTaskFlag = false
+let removeTaskFlag = false;
 
 // Modal toggle
 addBtn.addEventListener("click", function () {
@@ -32,19 +33,17 @@ addBtn.addEventListener("click", function () {
 });
 
 // Make the delete button Active
-removeBtn.addEventListener('click' , function(){
-  removeTaskFlag = !removeTaskFlag
+removeBtn.addEventListener("click", function () {
+  removeTaskFlag = !removeTaskFlag;
 
-  if(removeTaskFlag===true){
-    alert('Delete button is Activated')
-    removeBtn.style.color = 'red'
+  if (removeTaskFlag === true) {
+    alert("Delete button is Activated");
+    removeBtn.style.color = "red";
+  } else {
+    alert("Delete Button Deactivated");
+    removeBtn.style.color = "white";
   }
-  else{
-    alert('Delete Button Deactivated')
-    removeBtn.style.color = 'white'
-  }
-})
-
+});
 
 /// Generating a Ticket
 
@@ -55,11 +54,11 @@ modalCont.addEventListener("keydown", function (e) {
   if (key === "Shift") {
     let task = textArea.value;
     console.log(task);
-    createTicket(task ,modalPriorityColor );
+    createTicket(task, modalPriorityColor);
   }
 });
 
-function createTicket(TicketTask , ticketColor) {
+function createTicket(TicketTask, ticketColor) {
   let id = shortid();
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
@@ -72,8 +71,9 @@ function createTicket(TicketTask , ticketColor) {
   mainCont.appendChild(ticketCont);
   modalCont.style.display = "none";
 
-  handleLock(ticketCont)
-  handleRemoval(ticketCont)
+  handleLock(ticketCont);
+  handleRemoval(ticketCont);
+  handleColor(ticketCont); // to change the color band
 }
 
 allPriorityColors.forEach(function (colorElem) {
@@ -82,8 +82,8 @@ allPriorityColors.forEach(function (colorElem) {
       priorityColorElements.classList.remove("active");
     });
     colorElem.classList.add("active");
-    let colorSelected = colorElem.classList[1]
-     modalPriorityColor = colorSelected
+    let colorSelected = colorElem.classList[1];
+    modalPriorityColor = colorSelected;
   });
 });
 
@@ -91,49 +91,50 @@ allPriorityColors.forEach(function (colorElem) {
 
 // Lock Handling to Edit Content
 
-function handleLock(ticket){
-    let ticketLockElem = ticket.querySelector('.ticket-lock')
-    let ticketLockIcon = ticketLockElem.children[0]
-    console.log(ticketLockIcon)
-    let ticketTaskArea = ticket.querySelector('.ticket-task')
+function handleLock(ticket) {
+  let ticketLockElem = ticket.querySelector(".ticket-lock");
+  let ticketLockIcon = ticketLockElem.children[0];
+  console.log(ticketLockIcon);
+  let ticketTaskArea = ticket.querySelector(".ticket-task");
 
-    ticketLockIcon.addEventListener('click' , function(){
-        if(ticketLockIcon.classList.contains(lockClass)){
-            ticketLockIcon.classList.remove(lockClass)
-            ticketLockIcon.classList.add(unlockClass)
+  ticketLockIcon.addEventListener("click", function () {
+    if (ticketLockIcon.classList.contains(lockClass)) {
+      ticketLockIcon.classList.remove(lockClass);
+      ticketLockIcon.classList.add(unlockClass);
 
-            ticketTaskArea.setAttribute('contenteditable' , 'true')
-        }
-        else{
-            ticketLockIcon.classList.remove(unlockClass)
-            ticketLockIcon.classList.add(lockClass)
-            ticketTaskArea.setAttribute('contenteditable' , 'false')
-        }
-    })
-    
-
-    
-
-
-    
+      ticketTaskArea.setAttribute("contenteditable", "true");
+    } else {
+      ticketLockIcon.classList.remove(unlockClass);
+      ticketLockIcon.classList.add(lockClass);
+      ticketTaskArea.setAttribute("contenteditable", "false");
+    }
+  });
 }
 
 // Delete the tickets - Homework
 
-function handleRemoval(ticket){
-  ticket.addEventListener('click' , function(){
-    if(!removeTaskFlag) return 
+function handleRemoval(ticket) {
+  ticket.addEventListener("click", function () {
+    if (!removeTaskFlag) return;
 
-    ticket.remove()
-  })
+    ticket.remove();
+  });
 }
 
+// Handle colorband change
 
+function handleColor(ticket){
+  let ticketColorBand = ticket.querySelector('.ticket-color')
+  ticketColorBand.addEventListener('click' , function(){
+    let currentColor = ticketColorBand.classList[1]
+    let currentColorIdx = colors.findIndex(function(color){
+       return currentColor === color
+    })
+    currentColorIdx++
+    let newTicketColorIdx = currentColorIdx % colors.length
+    let newTicketColor = colors[newTicketColorIdx]
 
-
-
-
-
-
-
-
+    ticketColorBand.classList.remove(currentColor)
+    ticketColorBand.classList.add(newTicketColor)
+  })
+}
