@@ -55,16 +55,18 @@ removeBtn.addEventListener("click", function () {
 modalCont.addEventListener("keydown", function (e) {
   let key = e.key;
   console.log(key);
-
+  let id = shortid()
   if (key === "Shift") {
     let task = textArea.value;
+  
     console.log(task);
-    createTicket(task, modalPriorityColor);
+    createTicket(id, task, modalPriorityColor);
   }
 });
 
-function createTicket(TicketTask, ticketColor) {
-  let id = shortid();
+function createTicket(TicketId, TicketTask, ticketColor) {
+
+  let id = TicketId;
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
@@ -79,7 +81,7 @@ function createTicket(TicketTask, ticketColor) {
   handleLock(ticketCont);
   handleRemoval(ticketCont);
   handleColor(ticketCont); // to change the color band
-  ticketsArr.push({id , TicketTask , ticketColor})
+  ticketsArr.push({id, TicketTask , ticketColor})
   console.log(ticketsArr)
   
 }
@@ -100,15 +102,25 @@ allPriorityColors.forEach(function (colorElem) {
 // Ticket Filteration wrt colors
 toolBoxColors.forEach(function(colorBox , i){
   colorBox.addEventListener('click' , function(){
-    let selectedToolBoxColor = toolBoxColors[i].classList[0]
+    let selectedToolBoxColor = toolBoxColors[i].classList[0] // lightblue
     let filteredTickets = ticketsArr.filter(function(ticket){
       return selectedToolBoxColor === ticket.ticketColor
     })
 
     console.log(filteredTickets)
+
+    mainCont.innerHTML = ''
+
+
+
+    filteredTickets.forEach(function(filteredTicket){
+      createTicket(filteredTicket.id , filteredTicket.TicketTask , filteredTicket.ticketColor)
+    })
      
   })
 })
+
+// solve the ticket repetition bug
 
 
 
