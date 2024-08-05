@@ -82,7 +82,7 @@ function createTicket(TicketId, TicketTask, ticketColor) {
   modalCont.style.display = "none";
 
   handleLock(ticketCont);
-  handleRemoval(ticketCont);
+  handleRemoval(id,ticketCont);
   handleColor(id,ticketCont); // to change the color band
 
   if(!TicketId){
@@ -168,10 +168,15 @@ function handleLock(ticket) {
 
 // Delete the tickets - Homework
 
-function handleRemoval(ticket) {
+function handleRemoval(id,ticket) {
   ticket.addEventListener("click", function () {
     if (!removeTaskFlag) return;
-    ticket.remove();
+    ticket.remove(); // removing from the UI
+    ticketsArr = ticketsArr.filter(function(ticket){
+      return ticket.id !== id;
+    })
+    console.log("------checking tickets array after deletion ------------")
+    console.log(ticketsArr)
   });
 }
 
