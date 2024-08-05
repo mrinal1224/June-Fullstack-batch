@@ -18,7 +18,7 @@ const colors = ["lightpink", "lightgreen", "lightblue", "black"];
 modalCont.style.display = "none";
 
 //local variables
-let modalPriorityColor = "lightpink";
+let modalPriorityColor = "black";
 
 let unlockClass = "fa-lock-open";
 let lockClass = "fa-lock";
@@ -55,18 +55,21 @@ removeBtn.addEventListener("click", function () {
 modalCont.addEventListener("keydown", function (e) {
   let key = e.key;
   console.log(key);
-  let id = shortid()
   if (key === "Shift") {
     let task = textArea.value;
-  
-    console.log(task);
-    createTicket(id, task, modalPriorityColor);
+    createTicket(null, task, modalPriorityColor);
+    textArea.value = "";
   }
 });
 
 function createTicket(TicketId, TicketTask, ticketColor) {
-
-  let id = TicketId;
+  let id;
+  if(TicketId){
+    id = TicketId
+  }else{
+    id = shortid()
+  }
+  
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
 
@@ -81,7 +84,11 @@ function createTicket(TicketId, TicketTask, ticketColor) {
   handleLock(ticketCont);
   handleRemoval(ticketCont);
   handleColor(ticketCont); // to change the color band
-  ticketsArr.push({id, TicketTask , ticketColor})
+
+  if(!TicketId){
+    ticketsArr.push({id, TicketTask , ticketColor})
+  }
+  
   console.log(ticketsArr)
   
 }
@@ -103,6 +110,7 @@ allPriorityColors.forEach(function (colorElem) {
 toolBoxColors.forEach(function(colorBox , i){
   colorBox.addEventListener('click' , function(){
     let selectedToolBoxColor = toolBoxColors[i].classList[0] // lightblue
+    // debugger
     let filteredTickets = ticketsArr.filter(function(ticket){
       return selectedToolBoxColor === ticket.ticketColor
     })
@@ -111,12 +119,17 @@ toolBoxColors.forEach(function(colorBox , i){
 
     mainCont.innerHTML = ''
 
-
-
     filteredTickets.forEach(function(filteredTicket){
       createTicket(filteredTicket.id , filteredTicket.TicketTask , filteredTicket.ticketColor)
     })
      
+  })
+
+  colorBox.addEventListener('dblclick',function(){
+     mainCont.innerHTML = ''
+    ticketsArr.forEach(function(ticket){
+      createTicket(ticket.id,ticket.TicketTask,ticket.ticketColor)
+    })
   })
 })
 
