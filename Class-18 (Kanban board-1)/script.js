@@ -81,7 +81,7 @@ function createTicket(TicketId, TicketTask, ticketColor) {
   mainCont.appendChild(ticketCont);
   modalCont.style.display = "none";
 
-  handleLock(ticketCont);
+  handleLock(id,ticketCont);
   handleRemoval(id,ticketCont);
   handleColor(id,ticketCont); // to change the color band
 
@@ -146,7 +146,7 @@ toolBoxColors.forEach(function(colorBox , i){
 
 // Lock Handling to Edit Content
 
-function handleLock(ticket) {
+function handleLock(id,ticket) {
   let ticketLockElem = ticket.querySelector(".ticket-lock");
   let ticketLockIcon = ticketLockElem.children[0];
   console.log(ticketLockIcon);
@@ -162,6 +162,14 @@ function handleLock(ticket) {
       ticketLockIcon.classList.remove(unlockClass);
       ticketLockIcon.classList.add(lockClass);
       ticketTaskArea.setAttribute("contenteditable", "false");
+      
+      let idx = ticketsArr.findIndex(function(ticket){
+        return ticket.id === id;
+      })
+      ticketsArr[idx].TicketTask = ticketTaskArea.textContent;
+
+      console.log("------checking tickets array after edit ------------")
+      console.log(ticketsArr);
     }
   });
 }
