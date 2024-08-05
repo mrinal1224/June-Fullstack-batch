@@ -158,7 +158,6 @@ function handleLock(ticket) {
 function handleRemoval(ticket) {
   ticket.addEventListener("click", function () {
     if (!removeTaskFlag) return;
-
     ticket.remove();
   });
 }
