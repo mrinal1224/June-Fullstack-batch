@@ -26,6 +26,17 @@ let lockClass = "fa-lock";
 let addtaskFlag = false;
 let removeTaskFlag = false;
 
+
+const ticketsFromLocalStorage = JSON.parse(localStorage.getItem('ticketsArr'));
+
+if(ticketsFromLocalStorage){
+  ticketsArr = ticketsFromLocalStorage;
+  
+  ticketsArr.forEach(function(ticket){
+    createTicket(ticket.id,ticket.TicketTask,ticket.ticketColor)
+  })
+}
+
 // Modal toggle
 addBtn.addEventListener("click", function () {
   addtaskFlag = !addtaskFlag;
@@ -87,6 +98,7 @@ function createTicket(TicketId, TicketTask, ticketColor) {
 
   if(!TicketId){
     ticketsArr.push({id, TicketTask , ticketColor})
+    localStorage.setItem("ticketsArr",JSON.stringify(ticketsArr));
   }
   
   console.log(ticketsArr)
@@ -170,6 +182,7 @@ function handleLock(id,ticket) {
 
       console.log("------checking tickets array after edit ------------")
       console.log(ticketsArr);
+      updateLocalstorage();
     }
   });
 }
@@ -185,6 +198,7 @@ function handleRemoval(id,ticket) {
     })
     console.log("------checking tickets array after deletion ------------")
     console.log(ticketsArr)
+    updateLocalstorage();
   });
 }
 
@@ -211,7 +225,7 @@ function handleColor(id,ticket){
 
     console.log("----------Inside color change value of ticket array-----------")
     console.log(ticketsArr)
-
+    updateLocalstorage();
 
   })
 }
@@ -220,3 +234,6 @@ function handleColor(id,ticket){
 
 
 
+function updateLocalstorage(){
+  localStorage.setItem('ticketsArr',JSON.stringify(ticketsArr));
+}
