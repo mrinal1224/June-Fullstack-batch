@@ -83,7 +83,7 @@ function createTicket(TicketId, TicketTask, ticketColor) {
 
   handleLock(ticketCont);
   handleRemoval(ticketCont);
-  handleColor(ticketCont); // to change the color band
+  handleColor(id,ticketCont); // to change the color band
 
   if(!TicketId){
     ticketsArr.push({id, TicketTask , ticketColor})
@@ -177,7 +177,7 @@ function handleRemoval(ticket) {
 
 // Handle colorband change
 
-function handleColor(ticket){
+function handleColor(id,ticket){
   let ticketColorBand = ticket.querySelector('.ticket-color')
   ticketColorBand.addEventListener('click' , function(){
     let currentColor = ticketColorBand.classList[1]
@@ -190,6 +190,16 @@ function handleColor(ticket){
 
     ticketColorBand.classList.remove(currentColor)
     ticketColorBand.classList.add(newTicketColor)
+
+    let idx = ticketsArr.findIndex(function(ticket){
+      return ticket.id === id;
+    })
+    ticketsArr[idx].ticketColor = newTicketColor
+
+    console.log("----------Inside color change value of ticket array-----------")
+    console.log(ticketsArr)
+
+
   })
 }
 
