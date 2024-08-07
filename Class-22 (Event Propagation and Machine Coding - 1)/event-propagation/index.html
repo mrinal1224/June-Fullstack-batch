@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Propagation</title>
+    <style>
+      .box {
+        border: 2px solid black;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id="grandparent">
+      Grand Parent
+      <div class="box" id="parent">
+        Parent
+        <div class="box" id="child">Child</div>
+      </div>
+      <!-- <div class="box" id="parent2"></div> -->
+    </div>
+
+    <script>
+      const gp = document.getElementById("grandparent");
+      const p = document.getElementById("parent");
+      const c = document.getElementById("child");
+
+      gp.addEventListener("click", function (event) {
+        console.log("Grand Parent Clicked");
+      });
+
+      p.addEventListener("click", function () {
+        console.log("Parent Clicked");
+      });
+
+      c.addEventListener("click", function (event) {
+        console.log("Child Clicked");
+        event.stopPropagation();
+      });
+    </script>
+  </body>
+</html>

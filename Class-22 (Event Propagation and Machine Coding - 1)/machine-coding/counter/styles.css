@@ -1,0 +1,15 @@
+.container {
+  text-align: center;
+}
+
+.changeBySelector {
+  margin: 8px auto;
+}
+
+#reset-button {
+  background-color: yellow;
+}
+
+.controls button {
+  background-color: aqua;
+}
