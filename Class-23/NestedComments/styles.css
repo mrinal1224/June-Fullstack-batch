@@ -8,3 +8,7 @@ p {
   border-radius: 5px;
   background-color: lightblue;
 }
+
+.sub-comment-container {
+  margin-left: 20px;
+}
