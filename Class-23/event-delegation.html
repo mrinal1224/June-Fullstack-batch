@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Delegation</title>
+  </head>
+  <body>
+    <div id="categories">
+      <div class="category" id="headphones">
+        <h2>HeadPhones</h2>
+        <div class="product">Product A</div>
+        <div class="product">Product B</div>
+        <div class="product">Product C</div>
+      </div>
+
+      <div class="category" id="laptops">
+        <h2>Laptops</h2>
+        <div class="product">Product X</div>
+        <div class="product">Product Y</div>
+        <div class="product">Product Z</div>
+      </div>
+
+      <div class="category" id="mobiles">
+        <h2>Mobiles</h2>
+        <div class="product">Product P</div>
+        <div class="product">Product Q</div>
+        <div class="product">Product W</div>
+      </div>
+    </div>
+
+    <script>
+      const categories = document.getElementById("categories");
+
+      categories.addEventListener("click", (event) => {
+        const clickedElement = event.target;
+
+        // Check if the clicked element is a product
+        if (clickedElement.classList.contains("product")) {
+          const productName = clickedElement.textContent;
+          const category = clickedElement
+            .closest(".category")
+            .querySelector("h2").textContent;
+          console.log(`Clicked on ${productName} in the ${category} category.`);
+        }
+      });
+    </script>
+  </body>
+</html>
