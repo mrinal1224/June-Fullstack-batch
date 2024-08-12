@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Throttling</title>
+    <style>
+      body,
+      html {
+        height: 3000px;
+      }
+
+      .status {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="status">
+      Scroll Position: <span id="scrollPosition">0</span>
+    </div>
+
+    <script>
+      let lastScrollTime = 0;
+
+      function updateScrollPosition() {
+        let now = new Date().getTime(); // Gets current timestamp in ms
+        if (now - lastScrollTime > 100) {
+          // Throttle period is 100ms
+          document.getElementById("scrollPosition").textContent =
+            window.scrollY;
+          console.log("scrolled");
+          lastScrollTime = now;
+        }
+      }
+
+      window.addEventListener("scroll", updateScrollPosition);
+    </script>
+  </body>
 </html>
+
+<!-- NOTE: This throttling technique is useful for improving performance in web applications.
+It reduces the number of times potentially expecsive operations are executed during rapid, 
+continuous event like scrolling. By limiting the updates, the script minimizes the
+workload on the browser, leading to the smoother scrolling and better user experience. -->
