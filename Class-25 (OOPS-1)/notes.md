@@ -377,4 +377,3 @@ In the examples above, `this` within the arrow function refers to the `this` val
 
 In summary, arrow functions do not have their own `this` binding, whereas regular functions do, and the value of `this` in a regular function depends on how it is called.
 
-Start the doubt Session!
