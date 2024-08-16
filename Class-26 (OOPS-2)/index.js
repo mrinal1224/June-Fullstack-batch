@@ -34,6 +34,7 @@ let Pizza2 = new Pizza(['onion' , 'mayo' , 'capsicum'] , 'Small' , 'Thick')
 
 
 
+
 console.log(Pizza1)
 console.log(Pizza2)
 
