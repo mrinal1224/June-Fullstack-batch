@@ -1,5 +1,3 @@
-
-
 function Book(Name , Author){
     this.name = Name
     this.author = Author

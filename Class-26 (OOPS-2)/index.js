@@ -1,8 +1,8 @@
-// let Pizza1 = {
-//   toppings : ['cheese' , 'tomatoes' , 'corn'],
-//   size : 'small' ,
-//   crust : 'thin' 
-// }
+let Pizza1 = {
+  toppings : ['cheese' , 'tomatoes' , 'corn'],
+  size : 'small' ,
+  crust : 'thin' 
+}
 
 
 // let Pizza2 = {
