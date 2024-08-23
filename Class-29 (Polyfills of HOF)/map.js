@@ -1,20 +1,22 @@
-// let arr = [1 , 2,3, 4,5]
+let arr = [1 , 2,3, 4,5]
 
-// let sqauredNum = arr.map(function(num){
-//     return num*num
-// })
+let sqauredNum = arr.map(function(num){
+    return num*num
+})
 
-// console.log(sqauredNum)
-// console.log(arr)
+console.log(sqauredNum)
+console.log(arr)
 
 // Polyfill for Map
 
 Array.prototype.myMap = function(callback){
-   let resultantArr = []
+   let resultantArr = [] // Results Array 
 
    for(let i=0 ; i<this.length ; i++){
       resultantArr.push(callback(this[i]))
    }
+
+   //This keyword points to the operational Array
 
    return resultantArr
 
