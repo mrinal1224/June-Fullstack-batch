@@ -38,3 +38,6 @@ let totalSum = arr2.myReduce(function (acc, num) {
 });
 
 console.log(totalSum);
+
+
+// forEach
