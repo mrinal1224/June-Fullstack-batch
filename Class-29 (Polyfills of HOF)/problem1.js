@@ -18,5 +18,37 @@ const transactions = [
     { customerId: 2, amount: 150, date: '2024-03-01' },
     { customerId: 1, amount: 200, date: '2024-03-02' },
     { customerId: 3, amount: 50, date: '2024-03-02' },
-    { customerId: 2, amount: 120, date: '2024-03-03' }
+    { customerId: 2, amount: 120, date: '2024-03-03' },
   ];
+
+let totalNumberOfTransactions = transactions.length // 5
+
+// Total number of Transactions
+
+const sumOfTransactions = transactions.reduce(function(total ,transaction ){
+       return total+transaction.amount
+} ,0)
+
+console.log(sumOfTransactions)
+
+const avgAmount = sumOfTransactions/totalNumberOfTransactions
+
+console.log(avgAmount)
+
+// transactionsPerDay: An object where keys are dates and values are arrays containing transactions made on that date.
+
+const transactionsPerDay = transactions.reduce(function(acc , transaction){
+  if(!acc[transaction.date]){
+    acc[transaction.date] = []
+  }
+
+  acc[transaction.date].push(transaction)
+  return acc
+} , {})
+
+console.log(transactionsPerDay)
+
+// 5th 
+
+
+
